@@ -1,0 +1,8 @@
+public sync void x() object lock
+public static sync void () class lock
+
+private void x(){
+  dothis();
+  dothat();
+  sycn(this()); block lock
+}

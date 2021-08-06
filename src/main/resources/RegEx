@@ -1,0 +1,165 @@
+package com.judell.lab.playground;
+
+public class RegEx {
+
+    public static void main(String[] args)
+    {
+        String str = "I am a string I am here";
+        System.out.println(str);
+        String str1 = str.replaceAll("I", "J");
+        System.out.println(str1);
+
+        /**
+         * . is a wilde card for any char
+         */
+        String an = "afbcDeeF12Ghhiiijkl99z";
+        System.out.println(an);
+        System.out.println(an.replaceAll(".", "Y"));
+
+        /**
+         * ^ looks for characters at the start of a string
+         * only matches the start of a string
+         */
+        System.out.println(an.replaceAll("^abcDee", "YYYffffffffffffff"));
+        String astr2 = "abcDeeF12Ghhiiijkl99zabcDeeKDFJDSFJKDFLK";
+        System.out.println(astr2.replaceAll("^abcDee", "YYYffffffffffffff"));
+
+        /**
+         * the string as a whole must match the regex
+         * cannot match part of the string
+         */
+        System.out.println(an.matches("^hello"));
+        System.out.println(an.matches("^abcDee"));
+        System.out.println(an.matches("abcDeeF12Ghhiiijkl99z"));
+
+        /**
+         * $ matches strings at the end
+         * boundry matcher for the end of a string
+         */
+        System.out.println(an.replaceAll("kl99z$", "-the end"));
+
+        /**
+         * match a specific letter or set of letters put the regex in []
+         */
+        System.out.println(an.replaceAll("[aei]", "X"));
+        System.out.println(an.replaceAll("[aei]", "i replaced stuff"));
+
+        /**
+         * replace if one of the 3 letters is followed by an F or a j
+         * replaces both letters
+         * ex: abceF turns into abcX
+         * the F got replaced as well
+         * ex2: abcej turns into abcX
+         */
+        System.out.println(an.replaceAll("[aei][Fj]", "X"));
+
+        /**
+         * find a word in a str that is upper or lowercase
+         */
+        System.out.println("harry".replaceAll("[Hh]arry", "Harry"));
+
+        /**
+         * replace every letter in the an str except fot the e and j
+         * character class inside brackets not a boundry matcher
+         * it negates the pattern that follows it
+         * so instead of matching all the charcaters of e and j
+         * this will match all the chars that are not e and j
+         */
+        System.out.println(an.replaceAll("[^ej]", "X"));
+
+        /**
+         * replace all occurences of a - f and 3 - 8 inclusive
+         * regex is case sensitive
+         * - specifies a range
+         */
+        System.out.println(an.replaceAll("[abcdef345678]", "X"));
+        System.out.println(an.replaceAll("[a-fA-F3-9]", "X"));
+        /**
+         *ignoring case sensitivity with (?i) this works with ascii values
+         * for unicode use (?iu)
+         */
+        System.out.println(an.replaceAll("(?i)[a-f3-8]", "X"));
+
+        /**
+         * replace all numbers in the string
+         * shorthand method with \\d
+         * \\D replaces all none digits
+         */
+        System.out.println(an.replaceAll("[0-9]", "X"));
+        System.out.println(an.replaceAll("\\d", "X"));
+        System.out.println(an.replaceAll("\\D", "X"));
+
+        String whiteSpace = "I ahve this in it\ta tab is here and new line\n";
+        System.out.println(whiteSpace);
+
+        /**
+         * removes all white space from a string
+         */
+        System.out.println(whiteSpace.replaceAll("\\s", ""));
+
+        /**
+         * remove a specific white space
+         */
+        System.out.println(whiteSpace.replaceAll("\t", "X"));
+
+        /**
+         * replace all none white space characters
+         */
+        System.out.println(whiteSpace.replaceAll("\\S", "X"));
+
+        /**
+         * mathces a-zA-Z 0-9 and _
+         */
+        String ann = "I hav z Z in My Trunck of 952 and_you are a file_folder 10";
+        System.out.println(ann.replaceAll("\\w", "X"));
+        /**
+         *oposite effect match anything but a-zA-Z 0-9 _
+         */
+        System.out.println(ann.replaceAll("\\W", "X"));
+
+        /**
+         * \b matches word boundries matches places where the word starts and ends
+         */
+        System.out.println(ann.replaceAll("\\b", "X"));
+
+        /**
+         * Quantifiers and pattern and matcher classes
+         */
+
+        /**
+         * quantifers specifies how often an element in a regex can occur
+         * {3} indicates the number of the preceding charcer that must occur in order for there to be a match
+         * always comes after the char it applies to.
+         */
+        String annn = "abcDeeeeeeeeeeeeeeeeeeeeF12Ghhiiiijkl99";
+        System.out.println(annn.replaceAll("^abcDe{3}", "YYY"));
+        /**
+         * for one or more e's
+         */
+        System.out.println(annn.replaceAll("^abcDe+", "YYY"));
+
+        /**
+         * match if it is followed by e's or if it is not (we do not care if we have e's or not)
+         * if it is 0 or more e's
+         */
+        String estr = "abcDF12Ghhiiiijkl99";
+        System.out.println(estr.replaceAll("^abcDe*", "YYY"));
+
+        /**
+         * specify the min and max times a char can occur
+         */
+        String test = "abcDeeeee";
+        System.out.println(test.replaceAll("^abcDe{2,5}", "YYY"));
+        System.out.println(annn.replaceAll("h+i*j", "Y"));
+
+        /**
+         * find all oc of an h2 tag
+         */
+        StringBuilder html = new StringBuilder("<h1>My Heading</h1>");
+        html.append("<h2>Sub</h2>");
+        html.append("<p>thisis a p</p>");
+        html.append("<p>thisis a para about something else</p>");
+        html.append("<h2>thisis a para about something else</h2>");
+        html.append("<p>here is the summary</p>");
+    }
+}

@@ -1,0 +1,86 @@
+package com.judell.lab.string_formating;
+
+public class StringFormatPrintF {
+
+    public static void main(String[] args) {
+        // integer
+        System.out.printf("%d", 10);
+
+        //floating point
+        System.out.printf("%f", 12.3);
+
+        //character
+        System.out.printf("%c", 'a');
+
+        //upper case char
+        System.out.printf("%C", 'a');
+
+        //String
+        System.out.printf("%s", "hello");
+
+        //Cap string
+        System.out.printf("%S", "hello");
+
+        //boolean
+        System.out.printf("%b", 5 < 4);
+
+        //boolean print cap false
+        System.out.printf("%B", 5 < 4);
+
+        //null passed to bool prints false
+        System.out.printf("%b", null);
+
+        /**
+         * non conditioned statement will go
+         * default which is true*/
+        System.out.printf("%b", "cow");
+
+        //scientific notation
+        System.out.printf("%e", 10.123);
+
+        //cap variant caps the e
+        System.out.printf("%E", 10.123);
+
+        /**print out dec or scientific format
+         *
+         * if magnitude is greater than or equal to 10^-4
+         * but < 10^precision then it is rep in decimal
+         * format.
+         *
+         * if magnitude is less than 10^-4 or greater than or
+         * equal to the 10^precision, then it is rep in
+         * computerized scientific notation.
+         *
+         * the total number of sig digs in magnitude is = to the
+         * precision. if the precision is not specified, then the
+         * default value is 6. if the precision is 0, then it is
+         * taken to be 1.*/
+        System.out.printf("%g", 10_000.0);
+        System.out.printf("%G", 1_000_000.0);
+
+        /*octal take this number and convert to octal
+        which is base 8*/
+        System.out.printf("%o", 10);
+
+        /*hexadecimal take 10 and converts it to
+        * hexadecmial */
+        System.out.printf("%x", 10);
+
+        /*cap variant that has letters A - F*/
+        System.out.printf("%X", 10);
+
+        /*hash code print the hash code of hello
+        * which is its address*/
+        System.out.printf("%h", "hello");
+
+        /*has cap variant which caps the output*/
+        System.out.printf("%H", "hello");
+
+        /*hexadecimal floating point values which is a
+        * hexadecimal with a decimal point*/
+        System.out.printf("%a", 10.12);
+
+        /*has cap variant which makes the letters caps*/
+        System.out.printf("%A", 10.12);
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "item1": "1",
+  "item2": "2",
+
+  "obj": {
+    "obj-itme1": "oi-1",
+    "obj-itme2": "oi-2"
+  }
+}
