@@ -4,6 +4,9 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Encodes and decodes a url
+ */
 public class UrlEncodeDecode {
 
     public static void main(String[] args) throws Exception{

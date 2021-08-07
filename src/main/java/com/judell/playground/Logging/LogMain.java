@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 //Todo: fix slf4j import dep
+//Todo: Refactor and add javadoc
 public class LogMain {
     private final static Logger LOGGER = LoggerFactory.getLogger(LogMain.class);
 

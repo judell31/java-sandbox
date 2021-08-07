@@ -1,5 +1,8 @@
 package com.judell.playground.strings;
 
+/**
+ * Sanitizes a string based on a regex
+ */
 public class Sanitization {
 
     public static void main(String[] args) {

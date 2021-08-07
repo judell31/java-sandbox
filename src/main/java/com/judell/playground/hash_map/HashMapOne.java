@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Scanner;
 
+//Todo: Refactor this and add javadoc
 public class HashMapOne {
     private static HashMap<String, String> map = new HashMap<>();
 
@@ -32,8 +33,6 @@ public class HashMapOne {
     public static void deleteFromMap(String key){
         map.remove(key);
     }
-
-
 
     public static Collection<String> triggerValues(){
         return map.values();

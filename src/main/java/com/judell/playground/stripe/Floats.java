@@ -1,5 +1,8 @@
 package com.judell.playground.stripe;
 
+/**
+ * Converting floats from whole to decimal and vis versa
+ */
 public class Floats {
 
     public static void main(String[] args) {

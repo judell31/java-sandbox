@@ -3,6 +3,7 @@ package com.judell.playground.hash_map;
 import java.util.HashMap;
 import java.util.Map;
 
+//Todo: Refactor this and add javadoc
 public class HashMapTwo {
     private final static String PREFIX = "!";
     private static HashMap<String, String> triggers = new HashMap<>();

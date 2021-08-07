@@ -23,6 +23,9 @@ public class ValidateEmail {
         System.out.println(correctEmailFormat);
     }
 
+    /**
+     * Checks if the email is valid
+     */
     public static boolean isValid(String email){
         Pattern pat = Pattern.compile(emailRegex);
         if (email == null){

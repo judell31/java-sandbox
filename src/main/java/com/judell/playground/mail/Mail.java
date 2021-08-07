@@ -9,6 +9,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
+//FixMe: This is broken
 public class Mail {
 
     public static void main(String[] args) throws MessagingException {

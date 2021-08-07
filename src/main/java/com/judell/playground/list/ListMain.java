@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+//Todo: Refactor and add javadoc
 public class ListMain {
 
     public static void main(String[] args) {
