@@ -2,8 +2,11 @@ package com.judell.playground.api_connection;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+
+import java.time.Instant;
 //import org.json.JSONArray;
 //import org.json.JSONObject;
 
@@ -14,10 +17,10 @@ import org.springframework.web.client.RestTemplate;
 public class APIConnection {
 
     public static void main(String[] args) throws JsonProcessingException {
-        get();
+//        get();
         post();
-        put();
-        delete();
+//        put();
+//        delete();
     }
 
     /**
@@ -35,9 +38,30 @@ public class APIConnection {
         System.out.println(jsonResp);
     }
 
-    //Todo: Implement this
-    public static void post() {
+    /**
+     * Makes a post request
+     * @throws JsonProcessingException
+     */
+    public static void post() throws JsonProcessingException {
+        RestTemplate restTemplate = new RestTemplate();
+        UserModel userModel = new UserModel();
+        ObjectMapper mapper = new ObjectMapper();
 
+        userModel.setFirstName("jay");
+        userModel.setLastName("james");
+        userModel.setInitials("jj");
+        userModel.setEmail("j@gmail.com");
+        userModel.setActive(true);
+        userModel.setAccountType("learner");
+        userModel.setVerified(false);
+        userModel.setAcctCreatedAt(Instant.now());
+        userModel.setClosedAt(null);
+        userModel.setPassword("Test123!");
+
+        ResponseEntity<Resp> respResponseEntity = restTemplate.postForEntity(APIConstants.POST_URL, userModel, Resp.class);
+        String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(respResponseEntity.getBody().data);
+
+        System.out.println(jsonResp);
     }
 
     //Todo: Implement this
