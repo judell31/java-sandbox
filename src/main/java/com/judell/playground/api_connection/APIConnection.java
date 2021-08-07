@@ -1,38 +1,52 @@
 package com.judell.playground.api_connection;
 
-import com.sun.tools.javac.Main;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 //import org.json.JSONArray;
 //import org.json.JSONObject;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 
-//Todo: Add post put and delete
-//Todo: fix json import
+/**
+ * Uses spring restemplate to make api calls
+ */
 public class APIConnection {
 
-    public static void main(String[] args){
-        apiConnection("get-games");
+    public static void main(String[] args) throws JsonProcessingException {
+        get();
+        post();
+        put();
+        delete();
     }
 
-    public static void apiConnection(String httpRequest){
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(APIConstants.URL + httpRequest)).build();
-        client.sendAsync(
-                request, HttpResponse.BodyHandlers.ofString()).thenApply(HttpResponse::body)
-//                .thenApply(APIConnection::parse).join();
-                .thenAccept(System.out::println).join();
+    /**
+     * Does a get request
+     * @throws JsonProcessingException
+     */
+    public static void get() throws JsonProcessingException {
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<Resp> response = restTemplate.getForEntity(APIConstants.GET_URL, Resp.class);
+        ObjectMapper mapper = new ObjectMapper();
+
+        String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody().data);
+
+        System.out.println(jsonResp);
     }
 
-    public static String parse(String resp){
-        JSONArray gameNames = new JSONArray(resp);
-        JSONObject gameName = gameNames.getJSONObject(0);
-        String name = gameName.getString("gameName");
-        System.out.println(name);
-        return name;
+    //Todo: Implement this
+    public static void post() {
+
+    }
+
+    //Todo: Implement this
+    public static void put() {
+
+    }
+
+    //Todo: Implement this
+    public static void delete() {
+
     }
 }

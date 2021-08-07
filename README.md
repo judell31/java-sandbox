@@ -1,2 +1,2 @@
-# java-playground
-A place for experimenting with java code
+# Java Sandbox
+A repo for experimental snippets of methods and algorithms. 
