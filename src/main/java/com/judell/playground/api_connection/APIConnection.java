@@ -17,10 +17,10 @@ import java.time.Instant;
 public class APIConnection {
 
     public static void main(String[] args) throws JsonProcessingException {
-//        get();
+        get();
         post();
-//        put();
-//        delete();
+        put();
+        delete();
     }
 
     /**
@@ -35,6 +35,7 @@ public class APIConnection {
 
         String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody().data);
 
+        System.out.println("Get---------------------");
         System.out.println(jsonResp);
     }
 
@@ -61,16 +62,17 @@ public class APIConnection {
         ResponseEntity<Resp> respResponseEntity = restTemplate.postForEntity(APIConstants.POST_URL, userModel, Resp.class);
         String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(respResponseEntity.getBody().data);
 
+        System.out.println("\nPost---------------------");
         System.out.println(jsonResp);
     }
 
     //Todo: Implement this
     public static void put() {
-
+        System.out.println("\nPut---------------------");
     }
 
     //Todo: Implement this
     public static void delete() {
-
+        System.out.println("\nDelete---------------------");
     }
 }
