@@ -3,6 +3,7 @@ package com.judell.playground.characters.testing_chars;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//Todo: Refactor this
 public class TestingChars {
     private static String[] punc = {",", ".", "!", "?", "/", ":", ";", "'", "\"", "-"};
     private static ArrayList<Character> characters = new ArrayList<>();
