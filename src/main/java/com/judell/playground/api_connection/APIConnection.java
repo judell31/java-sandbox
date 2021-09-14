@@ -19,8 +19,8 @@ public class APIConnection {
     public static void main(String[] args) throws JsonProcessingException {
         post();
         get();
-        put();
-        delete();
+//        put();
+//        delete();
     }
 
     /**
@@ -30,7 +30,7 @@ public class APIConnection {
     public static void get() throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<UserModel> response = restTemplate.getForEntity(APIConstants.GET_USER_URL, UserModel.class);
+        ResponseEntity<UserModel> response = restTemplate.getForEntity(APIConstants.GET_USER_URL + 21, UserModel.class);
         ObjectMapper mapper = new ObjectMapper();
 
         String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
