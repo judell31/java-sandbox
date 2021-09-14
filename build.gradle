@@ -1,11 +1,11 @@
 buildscript {
     repositories {
         maven {
-            url "http://192.168.0.197:8081/repository/maven-public/"
+            url nexusUrl
             allowInsecureProtocol = true
             credentials {
-                username "admin"
-                password "Mylove082917!"
+                username nexusUsername
+                password nexusPassword
             }
         }
     }
@@ -22,6 +22,9 @@ version '1.0'
 sourceCompatibility = 11
 
 repositories {
+    flatDir {
+        dir("character-validations")
+    }
     mavenCentral()
     maven {
         metadataSources {
@@ -37,13 +40,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.kcl.validations:character-validations:2.0@JAR'
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0-alpha0'
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0-alpha0'
     implementation group: 'javax.mail', name: 'javax.mail-api', version: '1.6.2'
     implementation group: 'org.json', name: 'json', version: '20190722'
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0-alpha1'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.1'
+//    implementation 'com.kcl.validations:character-validations:2.0@JAR'
 
     testImplementation group: 'junit', name: 'junit', version: '4.12'
 
