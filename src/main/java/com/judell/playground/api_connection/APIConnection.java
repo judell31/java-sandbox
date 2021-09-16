@@ -18,25 +18,24 @@ public class APIConnection {
 
     public static void main(String[] args) throws JsonProcessingException {
         post();
-        get();
-//        put();
-//        delete();
     }
 
     /**
      * Does a get request
      * @throws JsonProcessingException
      */
-    public static void get() throws JsonProcessingException {
+    public static void get(UserModel userModel) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<UserModel> response = restTemplate.getForEntity(APIConstants.GET_USER_URL + 21, UserModel.class);
+        ResponseEntity<UserModel> response = restTemplate.getForEntity(APIConstants.GET_USER_URL + userModel.getUserId(), UserModel.class);
         ObjectMapper mapper = new ObjectMapper();
 
         String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
 
         System.out.println("Get---------------------");
         System.out.println(jsonResp);
+
+        put(response.getBody());
     }
 
     /**
@@ -57,30 +56,33 @@ public class APIConnection {
 
         System.out.println("\nPost---------------------");
         System.out.println(jsonResp);
+
+        get(respResponseEntity.getBody());
     }
 
-    //Todo: Implement this
-    public static void put() throws JsonProcessingException {
+    public static void put(UserModel userModel) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
-        UserModel userModel = new UserModel();
         ObjectMapper mapper = new ObjectMapper();
 
-        userModel.setDescription("update");
+        userModel.setDescription("updates");
         userModel.setFirstName("update");
         userModel.setLastName("update");
 
-        restTemplate.put(APIConstants.PUT_URL, userModel, UserModel.class);
-//        String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(respResponseEntity.getBody());
+        restTemplate.put(APIConstants.PUT_URL + userModel.getUserId(), userModel);
+
+        ResponseEntity<UserModel> response = restTemplate.getForEntity(APIConstants.GET_USER_URL + userModel.getUserId(), UserModel.class);
+        String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
 
         System.out.println("\nPut---------------------");
-        System.out.println("user updated");
+        System.out.println(jsonResp);
+
+        delete(response.getBody());
     }
 
-    //Todo: Implement this
-    public static void delete() throws JsonProcessingException {
+    public static void delete(UserModel userModel) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
 
-        restTemplate.delete(APIConstants.DELETE_USER_URL);
+        restTemplate.delete(APIConstants.DELETE_USER_URL + userModel.getUserId());
 
         System.out.println("\nDelete---------------------");
         System.out.println("User Deleted!");
