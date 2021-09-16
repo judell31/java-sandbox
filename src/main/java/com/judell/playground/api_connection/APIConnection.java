@@ -21,7 +21,7 @@ public class APIConnection {
     public static void get(UserModel userModel) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<UserModel> response = restTemplate.getForEntity(APIConstants.GET_USER_URL + userModel.getUserId(), UserModel.class);
+        ResponseEntity<UserModel> response = restTemplate.getForEntity(APIConstants.GET_URL + userModel.getUserId(), UserModel.class);
         ObjectMapper mapper = new ObjectMapper();
 
         String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
@@ -64,7 +64,7 @@ public class APIConnection {
 
         restTemplate.put(APIConstants.PUT_URL + userModel.getUserId(), userModel);
 
-        ResponseEntity<UserModel> response = restTemplate.getForEntity(APIConstants.GET_USER_URL + userModel.getUserId(), UserModel.class);
+        ResponseEntity<UserModel> response = restTemplate.getForEntity(APIConstants.GET_URL + userModel.getUserId(), UserModel.class);
         String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
 
         System.out.println("\nPut---------------------");
@@ -76,7 +76,7 @@ public class APIConnection {
     public static void delete(UserModel userModel) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
 
-        restTemplate.delete(APIConstants.DELETE_USER_URL + userModel.getUserId());
+        restTemplate.delete(APIConstants.DELETE_URL + userModel.getUserId());
 
         System.out.println("\nDelete---------------------");
         System.out.println("User Deleted!");
