@@ -2,14 +2,8 @@ package com.judell.playground.api_connection;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
-import java.time.Instant;
-//import org.json.JSONArray;
-//import org.json.JSONObject;
-
 
 /**
  * Uses spring restemplate to make api calls
