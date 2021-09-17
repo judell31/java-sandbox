@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Uses spring restemplate to make api calls
+ * Uses spring rest template to make api calls
  */
 public class APIConnection {
 
