@@ -1,8 +1,8 @@
 package com.judell.playground.design_patterns.strategy;
 
 public class Goku {
-    SaiyanStrategy transform;
-    String saiyanLevel;
+    private SaiyanStrategy transform;
+    private String saiyanLevel;
 
     public Goku(String saiyanLevel){
         this.saiyanLevel = saiyanLevel;
