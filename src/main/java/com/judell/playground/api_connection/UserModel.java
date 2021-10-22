@@ -1,7 +1,5 @@
 package com.judell.playground.api_connection;
 
-import java.time.Instant;
-
 public class UserModel {
     private Long userId;
     private String firstName;

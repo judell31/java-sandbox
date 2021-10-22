@@ -40,6 +40,7 @@ repositories {
 }
 
 dependencies {
+    //Implementation
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0-alpha0'
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0-alpha0'
     implementation group: 'javax.mail', name: 'javax.mail-api', version: '1.6.2'
@@ -48,6 +49,7 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.1'
     implementation 'com.judell.libraries:character-validations:2.0@JAR'
 
+    //Test
     testImplementation group: 'junit', name: 'junit', version: '4.12'
 }
 
