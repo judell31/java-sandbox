@@ -12,11 +12,13 @@ import org.springframework.web.client.RestTemplate;
 public class WordDictionary {
 
     public static void main(String[] args) throws JsonProcessingException {
-        owlDictionary("hello");
+        owlDictionary("ham");
 //        freeDictionary("hello");
     }
 
     private static void owlDictionary(String word) throws JsonProcessingException {
+        String previousWord = "hush";
+
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 //        ObjectMapper mapper = new ObjectMapper();
@@ -25,17 +27,25 @@ public class WordDictionary {
         headers.set("Authorization", "Token 51fd1edd0479b71faea8a096e460b5e687c4e9da");
 
         try {
-            ResponseEntity<OwlWordModel> response = restTemplate.exchange(
+            restTemplate.exchange(
                     "https://owlbot.info/api/v4/dictionary/" + word,
                     HttpMethod.GET,
                     httpEntity,
                     OwlWordModel.class
             );
-
-            System.out.println(word.equalsIgnoreCase(response.getBody().getWord()));
         } catch (HttpClientErrorException httpClientErrorException) {
             System.out.println("The word you are looking for does not exist or your spelling is wrong");
         }
+
+        String lastCharPrevWord = previousWord.substring(previousWord.length() - 1);
+        String firstLetterCurrentWord = String.valueOf(word.charAt(0));
+
+        if (lastCharPrevWord.equalsIgnoreCase(firstLetterCurrentWord)) {
+            System.out.println("Correct");
+            return;
+        }
+
+        System.out.println("This word does not begin with" + " " + lastCharPrevWord);
 
 //        String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(new OwlWordResponse(response.getBody()));
 //        System.out.println(response.getStatusCode());
