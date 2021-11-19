@@ -40,7 +40,7 @@ repositories {
 }
 
 dependencies {
-    //Implementation
+//    implementation 'com.kcl.validations:character-validations:2.0@JAR'
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0-alpha0'
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0-alpha0'
     implementation group: 'javax.mail', name: 'javax.mail-api', version: '1.6.2'
