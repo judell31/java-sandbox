@@ -4,6 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 public class APIConnection {
 
     public static void main(String[] args) throws JsonProcessingException {
-        post();
+        getOwlWordDefinition();
     }
 
     /**
@@ -32,6 +35,24 @@ public class APIConnection {
         System.out.println(jsonResp);
 
         put(response.getBody());
+    }
+
+    public static void getOwlWordDefinition() throws JsonProcessingException {
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+
+        httpHeaders.add("Authorization", "Token 51fd1edd0479b71faea8a096e460b5e687c4e9da");
+
+        HttpEntity<String> httpEntity = new HttpEntity<>("auth", httpHeaders);
+
+        ResponseEntity<WordDefinitionModel> response = restTemplate.exchange(APIConstants.GET_URL + "word", HttpMethod.GET, httpEntity, WordDefinitionModel.class);
+        ObjectMapper mapper = new ObjectMapper();
+
+        String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
+
+        System.out.println("Get---------------------");
+        System.out.println(jsonResp);
     }
 
     /**
