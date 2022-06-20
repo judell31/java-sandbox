@@ -16,6 +16,8 @@ public class DateAndTime {
         utcToLocalTime();
         System.out.println("Local to UTC Time");
         localToUtcTime();
+        System.out.println("Date");
+        getLocalDate();
     }
 
     //TODO: Switch to using Joda Time
@@ -51,6 +53,17 @@ public class DateAndTime {
         Instant utcTimeStamp = Instant.now();
         ZonedDateTime cstTime = utcTimeStamp.atZone(ZoneId.of("America/Chicago"));
         convertLocalToUtc(cstTime);
+    }
+
+    public static void getLocalDate() {
+        Instant utcTimeStamp = Instant.now();
+        ZonedDateTime cstTime = utcTimeStamp.atZone(ZoneId.of("America/Chicago"));
+        System.out.println("Day of Week: " + cstTime.getDayOfWeek());
+        System.out.println("Day of Month: " + cstTime.getDayOfMonth());
+        System.out.println("Day of Year: " + cstTime.getDayOfYear());
+        System.out.println("Year: " + cstTime.getYear());
+        System.out.println("Month: " + cstTime.getMonth() + " or " + cstTime.getMonthValue());
+        System.out.println(SEPARATOR);
     }
 
     /**

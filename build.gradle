@@ -16,7 +16,7 @@ plugins {
     id 'application'
 }
 
-group 'java'
+group 'com.judell.java'
 version '1.0'
 
 sourceCompatibility = 18
