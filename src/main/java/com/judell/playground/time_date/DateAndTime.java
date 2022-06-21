@@ -1,5 +1,6 @@
 package com.judell.playground.time_date;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -9,21 +10,23 @@ import java.util.Date;
 
 public class DateAndTime {
     private static final String SEPARATOR = "------------------------------------------------------------------------";
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         System.out.println("Add and Subtract Time");
         addSubtractTime();
-//        System.out.println("UTC Time");
-//        getUtcTime();
-//        System.out.println("UTC to Local Time");
-//        utcToLocalTime();
-//        System.out.println("Local to UTC Time");
-//        localToUtcTime();
-//        System.out.println("Date Properties");
-//        getLocalDateProperties();
-//        System.out.println("UTC Next Day");
-//        utcNextDay();
-//        System.out.println("Date");
-//        dateFromInstant();
+        System.out.println("UTC Time");
+        getUtcTime();
+        System.out.println("UTC to Local Time");
+        utcToLocalTime();
+        System.out.println("Local to UTC Time");
+        localToUtcTime();
+        System.out.println("Date Properties");
+        getLocalDateProperties();
+        System.out.println("UTC Next Day");
+        utcNextDay();
+        System.out.println("Date");
+        dateFromInstant();
+        System.out.println("Compare Date");
+        compareDate();
     }
 
     //TODO: Switch to using Joda Time
@@ -85,7 +88,7 @@ public class DateAndTime {
     /**
      * HH = 24hr format hh = 12hr format
      */
-    public static void dateFromInstant() {
+    public static void dateFromInstant() throws ParseException {
         Instant utcTimeStamp = Instant.now();
 
         SimpleDateFormat militaryFormatter = new SimpleDateFormat("MM-dd-yyyy HH:mm");
@@ -97,6 +100,15 @@ public class DateAndTime {
         System.out.println("Non Formatted Date: " + Date.from(utcTimeStamp));
         System.out.println("Formatted Date 24hr: " + militaryFormat);
         System.out.println("Formatted Date 12hr: " + regularFormat);
+        System.out.println(SEPARATOR);
+    }
+
+    public static void compareDate() throws ParseException {
+        SimpleDateFormat sdformat = new SimpleDateFormat("MM-dd-yyyy");
+        Date d1 = sdformat.parse("04-15-2019");
+        Date d2 = sdformat.parse("08-10-2019");
+
+        System.out.println(d1.compareTo(d2) < 0);
         System.out.println(SEPARATOR);
     }
 
