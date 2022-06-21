@@ -27,6 +27,8 @@ public class DateAndTime {
         dateFromInstant();
         System.out.println("Compare Date");
         compareDate();
+        System.out.println("Compare Time");
+        compareTime();
     }
 
     //TODO: Switch to using Joda Time
@@ -106,9 +108,17 @@ public class DateAndTime {
     public static void compareDate() throws ParseException {
         SimpleDateFormat sdformat = new SimpleDateFormat("MM-dd-yyyy");
         Date d1 = sdformat.parse("04-15-2019");
-        Date d2 = sdformat.parse("08-10-2019");
+        Date d2 = sdformat.parse("03-10-2019");
 
         System.out.println(d1.compareTo(d2) < 0);
+        System.out.println(SEPARATOR);
+    }
+
+    public static void compareTime() {
+        Instant instant = Instant.now();
+        String instant2 = "2022-07-16T00:00:00.000Z";
+
+        System.out.println(instant.compareTo(Instant.parse(instant2)) > 0);
         System.out.println(SEPARATOR);
     }
 
