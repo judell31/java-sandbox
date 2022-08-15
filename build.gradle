@@ -19,7 +19,7 @@ plugins {
 group 'com.judell.java'
 version '1.0'
 
-sourceCompatibility = 18
+sourceCompatibility = 17
 
 repositories {
     flatDir {
