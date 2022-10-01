@@ -11,7 +11,7 @@ public class ExtractText {
         Pattern pattern = Pattern.compile("\\[(.*?)]");
         Matcher matcher = pattern.matcher(str);
 
-        if( matcher.find() ) {
+        if(matcher.find()) {
             System.out.println( matcher.group(1));
         }
     }
