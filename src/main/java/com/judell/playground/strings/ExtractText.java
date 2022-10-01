@@ -8,7 +8,7 @@ public class ExtractText {
     public static void main(String[] args) {
         String str = "[Cum in me]";
 
-        Pattern pattern = Pattern.compile("\\[(.*?)\\]");
+        Pattern pattern = Pattern.compile("\\[(.*?)]");
         Matcher matcher = pattern.matcher(str);
 
         if( matcher.find() ) {
