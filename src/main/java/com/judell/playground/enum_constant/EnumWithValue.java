@@ -1,5 +1,8 @@
 package com.judell.playground.enum_constant;
 
+import lombok.Getter;
+
+@Getter
 public enum EnumWithValue {
     STUDENT("student"),
     PARENT("parent"),
@@ -9,9 +12,5 @@ public enum EnumWithValue {
 
     EnumWithValue(String userType) {
         this.userType = userType;
-    }
-
-    public String getUserType() {
-        return this.userType;
     }
 }
