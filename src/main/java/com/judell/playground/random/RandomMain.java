@@ -4,7 +4,7 @@ package com.judell.playground.random;
  * Gives a status if the number is > 4
  */
 public class RandomMain {
-    private static GenRandomNumber randomNumber = new GenRandomNumber();
+    private static final GenRandomNumber randomNumber = new GenRandomNumber();
 
     public static void main(String[] args) {
         String user = "!help";

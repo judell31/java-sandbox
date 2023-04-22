@@ -10,6 +10,5 @@ public class Sanitization {
         String x = "daddy i want cuddles";
         String words = string.replaceAll("[^a-zA-Z ]", "").toLowerCase();
         System.out.println(words.equalsIgnoreCase(x));
-//        String[] words = string.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
     }
 }

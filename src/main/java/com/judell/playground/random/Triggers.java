@@ -14,7 +14,7 @@ public class Triggers {
         triggers.put("help", PREFIX + "help");
     }
 
-    public static HashMap triggerMap(){
+    public static HashMap<String, String> triggerMap(){
         return triggers;
     }
 
@@ -23,7 +23,6 @@ public class Triggers {
     }
 
     public static String triggerKeys(String key){
-        triggerMap().keySet();
         return triggers.get(key);
     }
 }

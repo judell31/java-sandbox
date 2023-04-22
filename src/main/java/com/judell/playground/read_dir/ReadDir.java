@@ -32,7 +32,8 @@ public class ReadDir {
             List<String> collect = stream
                     .map(String::valueOf)
                     .sorted()
-                    .collect(Collectors.toList());
+//                    .collect(Collectors.toList());
+                    .toList();
 
             collect.forEach(System.out::println);
         } catch (IOException e) {

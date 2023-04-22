@@ -21,8 +21,8 @@ public class UrlEncodeDecode {
         String crunchifyValue2 = "Hello There, We started accepting Guest-Posts on Crunchify...";
 
         // Or directly provide UTF-8
-        String encodedValue2 = URLEncoder.encode(crunchifyValue2, "UTF-8");
-        String decodedValue2 = URLDecoder.decode(encodedValue2, "UTF-8");
+        String encodedValue2 = URLEncoder.encode(crunchifyValue2, StandardCharsets.UTF_8);
+        String decodedValue2 = URLDecoder.decode(encodedValue2, StandardCharsets.UTF_8);
         System.out.println("\ncrunchifyValue2 after encoding => " + encodedValue2);
         System.out.println("crunchifyValue2 after decoding (Original Value) => " + decodedValue2);
     }

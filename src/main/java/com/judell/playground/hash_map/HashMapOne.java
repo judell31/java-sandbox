@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 //Todo: Refactor this and add javadoc
 public class HashMapOne {
-    private static HashMap<String, String> map = new HashMap<>();
+    private static final HashMap<String, String> map = new HashMap<>();
 
     public static void main(String[] args) {
         map.put("t", "test");

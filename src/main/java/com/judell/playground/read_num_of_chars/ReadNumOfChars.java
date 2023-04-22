@@ -24,7 +24,7 @@ public class ReadNumOfChars {
             String exit = input.nextLine();
 
             if (exit.equals("y")){
-                x = 1;
+                x = 4;
             }
             else if (exit.equals("n")){
                 x = 2;

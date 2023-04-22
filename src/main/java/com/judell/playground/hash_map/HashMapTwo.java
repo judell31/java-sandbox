@@ -6,20 +6,20 @@ import java.util.Map;
 //Todo: Refactor this and add javadoc
 public class HashMapTwo {
     private final static String PREFIX = "!";
-    private static HashMap<String, String> triggers = new HashMap<>();
+    private static final HashMap<String, String> triggers = new HashMap<>();
 
     public static void main(String[] args) {
         System.out.println(triggerKeyList());
     }
 
-    private static HashMap triggerMap(){
+    private static HashMap<String, String> triggerMap(){
         triggers.put("nero", PREFIX + "n");
         triggers.put("son", PREFIX + "s");
         triggers.put("smh", PREFIX + "nsmh");
         return triggers;
     }
 
-    public static Map triggerKeys(){
+    public static Map<String, String> triggerKeys(){
         return triggerMap();
     }
 

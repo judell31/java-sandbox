@@ -1,6 +1,6 @@
 package com.judell.playground.design_patterns.singleton;
 
-public class MainClass {
+public class SingletonMain {
 
     public static void main(String[] args) {
         SingletonClass obj1 = SingletonClass.getInstance();

@@ -1,4 +1,4 @@
-package com.judell.playground.stripe;
+package com.judell.playground.floats;
 
 /**
  * Converting floats from whole to decimal and vis versa

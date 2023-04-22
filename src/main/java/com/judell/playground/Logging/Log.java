@@ -1,15 +1,13 @@
 package com.judell.playground.Logging;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//Todo: fix slf4j import dep
-//Todo: Refactor and add javadoc
-public class LogMain {
-    private final static Logger LOGGER = LoggerFactory.getLogger(LogMain.class);
+/**
+ * Adds logging to project
+ */
+public class Log {
+    private final static Logger LOGGER = LoggerFactory.getLogger(Log.class);
 
     public static void main(String[] args) {
         int x = 3;

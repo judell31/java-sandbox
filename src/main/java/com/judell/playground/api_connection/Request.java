@@ -1,7 +1,10 @@
 package com.judell.playground.api_connection;
 
+import lombok.Data;
+
+@Data
 public class Request {
-    public String firstName;
-    public String lastName;
-    public String description;
+    private String firstName;
+    private String lastName;
+    private String description;
 }

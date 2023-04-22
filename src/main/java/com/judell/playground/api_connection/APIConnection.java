@@ -2,8 +2,6 @@ package com.judell.playground.api_connection;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -11,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Uses spring rest template to make api calls
+ * Uses spring rest template to make api service calls
  */
 public class APIConnection {
 
@@ -23,7 +21,7 @@ public class APIConnection {
      * Does a get request
      * @throws JsonProcessingException
      */
-    public static void get(UserModel userModel) throws JsonProcessingException {
+    public static void getUser(UserModel userModel) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<UserModel> response = restTemplate.getForEntity(APIConstants.GET_URL + userModel.getUserId(), UserModel.class);
@@ -34,7 +32,7 @@ public class APIConnection {
         System.out.println("Get---------------------");
         System.out.println(jsonResp);
 
-        put(response.getBody());
+        updateUser(response.getBody());
     }
 
     public static void getOwlWordDefinition() throws JsonProcessingException {
@@ -59,7 +57,7 @@ public class APIConnection {
      * Makes a post request
      * @throws JsonProcessingException
      */
-    public static void post() throws JsonProcessingException {
+    public static void addUser() throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
         UserModel userModel = new UserModel();
         ObjectMapper mapper = new ObjectMapper();
@@ -74,10 +72,10 @@ public class APIConnection {
         System.out.println("\nPost---------------------");
         System.out.println(jsonResp);
 
-        get(respResponseEntity.getBody());
+        getUser(respResponseEntity.getBody());
     }
 
-    public static void put(UserModel userModel) throws JsonProcessingException {
+    public static void updateUser(UserModel userModel) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
         ObjectMapper mapper = new ObjectMapper();
 
@@ -93,10 +91,10 @@ public class APIConnection {
         System.out.println("\nPut---------------------");
         System.out.println(jsonResp);
 
-        delete(response.getBody());
+        deleteUser(response.getBody());
     }
 
-    public static void delete(UserModel userModel) throws JsonProcessingException {
+    public static void deleteUser(UserModel userModel) {
         RestTemplate restTemplate = new RestTemplate();
 
         restTemplate.delete(APIConstants.DELETE_URL + userModel.getUserId());

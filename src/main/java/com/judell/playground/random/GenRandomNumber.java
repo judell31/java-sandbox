@@ -6,7 +6,7 @@ import java.util.Random;
  * Generates a random number
  */
 public class GenRandomNumber {
-    private Random random = new Random(System.currentTimeMillis());
+    private final Random random = new Random(System.currentTimeMillis());
     private int num;
 
     public Integer randomNumber(){

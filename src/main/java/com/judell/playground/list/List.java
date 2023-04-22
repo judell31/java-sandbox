@@ -1,14 +1,13 @@
 package com.judell.playground.list;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 //Todo: Refactor and add javadoc
-public class ListMain {
+public class List {
 
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
+        java.util.List<String> list = new ArrayList<>();
         String[] test = {"test", "me", "and", "you", "the", "tree"};
 
         System.out.println("List size before add: " + list.size());
