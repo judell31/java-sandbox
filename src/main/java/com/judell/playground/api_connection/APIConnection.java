@@ -15,6 +15,7 @@ public class APIConnection {
 
     public static void main(String[] args) throws JsonProcessingException {
         getOwlWordDefinition();
+        post();
     }
 
     /**
@@ -25,6 +26,9 @@ public class APIConnection {
         RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<UserModel> response = restTemplate.getForEntity(APIConstants.GET_URL + userModel.getUserId(), UserModel.class);
+
+        // TODO: Handle null response body
+
         ObjectMapper mapper = new ObjectMapper();
 
         String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
@@ -40,11 +44,11 @@ public class APIConnection {
 
         HttpHeaders httpHeaders = new HttpHeaders();
 
-        httpHeaders.add("Authorization", "Token 51fd1edd0479b71faea8a096e460b5e687c4e9da");
+        httpHeaders.add(APIConstants.AUTH_HEADER, APIConstants.OWL_TOKEN);
 
         HttpEntity<String> httpEntity = new HttpEntity<>("auth", httpHeaders);
 
-        ResponseEntity<WordDefinitionModel> response = restTemplate.exchange(APIConstants.GET_URL + "word", HttpMethod.GET, httpEntity, WordDefinitionModel.class);
+        ResponseEntity<WordDefinitionModel> response = restTemplate.exchange(APIConstants.OWL_URL + "word", HttpMethod.GET, httpEntity, WordDefinitionModel.class);
         ObjectMapper mapper = new ObjectMapper();
 
         String jsonResp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
@@ -64,6 +68,7 @@ public class APIConnection {
 
         userModel.setFirstName("jay");
         userModel.setLastName("james");
+        userModel.setEmail("jj@gmail.com");
         userModel.setDescription("test");
 
         ResponseEntity<UserModel> respResponseEntity = restTemplate.postForEntity(APIConstants.POST_URL, userModel, UserModel.class);
