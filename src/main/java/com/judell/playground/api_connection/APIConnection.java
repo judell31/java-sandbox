@@ -15,7 +15,7 @@ public class APIConnection {
 
     public static void main(String[] args) throws JsonProcessingException {
         getOwlWordDefinition();
-        post();
+//        post();
     }
 
     /**
