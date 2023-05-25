@@ -1,7 +1,6 @@
 package com.judell.playground.scratchpad;
 
-import java.sql.Timestamp;
-import java.time.Instant;
+import java.util.List;
 
 public class ScratchPad {
     
