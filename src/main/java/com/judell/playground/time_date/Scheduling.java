@@ -2,60 +2,64 @@ package com.judell.playground.time_date;
 
 import net.time4j.*;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Scheduling {
 
     public static void main(String[] args) {
         PlainDate date = PlainDate.of(2024, 2, 28);
-        PlainTime aptTime = PlainTime.of(15, 0); // 3:30pm
 
-        PlainDate date2 = PlainDate.of(2024, 2, 28);
-        PlainTime aptTime2 = PlainTime.of(14, 0); // 3:30pm
+        PlainTime aptTime1 = PlainTime.of(15, 0); // 3:30pm
+        PlainTime aptTime2 = PlainTime.of(14, 0);
+        PlainTime aptTime3 = PlainTime.of(10, 0);
 
-        PlainTimestamp appointment = PlainTimestamp.of(date, aptTime);
-        PlainTimestamp otherAppointment = PlainTimestamp.of(date2, aptTime2);
+        PlainTimestamp appointment1 = PlainTimestamp.of(date, aptTime1);
+        PlainTimestamp otherAppointment2 = PlainTimestamp.of(date, aptTime2);
+        PlainTimestamp otherAppointment3 = PlainTimestamp.of(date, aptTime3);
 
         List<PlainTimestamp> appointments = new ArrayList<>();
 
-        appointments.add(appointment);
-        appointments.add(otherAppointment);
+        appointments.add(appointment1);
+        appointments.add(otherAppointment2);
+        appointments.add(otherAppointment3);
 
-        PlainTime startTime = PlainTime.of(8, 0); // 3:30pm
-        PlainTime endTime = PlainTime.of(17, 0); // 3:30pm
-        PlainTime time = startTime; // 3:30pm
+        Weekday startDay = Weekday.MONDAY;
+        Weekday endDay = Weekday.FRIDAY;
+
+        PlainTime tutorStartTime = PlainTime.of(8, 0);
+        PlainTime tutorEndTime = PlainTime.of(17, 0);
+
+        PlainDate inputStartDate = PlainDate.of(2024, 2, 26);
+        PlainDate inputEndDate = PlainDate.of(2024, 3, 26);
+
+        PlainTime currentTutorStartTime = tutorStartTime;
 
         int interval = 1;
 
-        while (time.isBefore(endTime)) {
-            boolean isAvlailable = true;
+        while (inputStartDate.getDayOfWeek().compareTo(startDay) >= 0 && inputEndDate.getDayOfWeek().compareTo(endDay) <= 0) {
+            System.out.println("\n" + inputStartDate);
 
-            for (PlainTimestamp appointmentt : appointments) {
-                if (appointmentt.equals(PlainTimestamp.of(date, time))) {
-                    isAvlailable = false;
-
-                    break;
-                }
-            }
-
-            if (isAvlailable) {
-                System.out.println(PlainTimestamp.of(date, time));
-            }
-
-            time = time.plus(interval, ClockUnit.HOURS);
-        }
-
-        for (int i = 0; i < 16; i++) {
-            if (time.isBefore(endTime)) {
-                for (PlainTimestamp apt : appointments) {
-                    if (!apt.equals(PlainTimestamp.of(date, time))) {
-                        System.out.println(PlainTimestamp.of(date, time));
+            for (int i = tutorStartTime.getHour(); i < tutorEndTime.getHour(); i++) {
+                boolean isAvailable = true;  // Reset availability for each hour
+                for (PlainTimestamp appointmentTime : appointments) {
+                    if (i == appointmentTime.getHour() && inputStartDate.equals(appointmentTime.toDate())) {
+                        isAvailable = false;
+                        break;  // No need to check further appointments for this hour
                     }
                 }
 
-                time = time.plus(interval, ClockUnit.HOURS);
+                if (isAvailable) {
+                    System.out.println("---------- Available: " + i + ":00");
+                }
+            }
+
+            inputStartDate = inputStartDate.plus(interval, CalendarUnit.DAYS);
+            currentTutorStartTime = currentTutorStartTime.plus(interval, ClockUnit.HOURS);
+
+            if (inputStartDate.compareTo(inputEndDate) > 0) {
+                break;
             }
         }
     }

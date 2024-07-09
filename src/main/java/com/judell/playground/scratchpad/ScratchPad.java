@@ -1,7 +1,5 @@
 package com.judell.playground.scratchpad;
 
-import java.util.List;
-
 public class ScratchPad {
     
     public static void main(String[] args) {
